@@ -1,16 +1,9 @@
 import { 
     Box, 
-    Flex, 
-    VStack, 
-    Text,
-    Image,
     Grid,
-    GridItem,
-    Button
 } from '@chakra-ui/react';
-import { useDispatch } from 'react-redux';
 
-import { addToCart } from '../../redux/reducer/CartReducer';
+import CardItem from './components/CardItem';
 
 const productList = [
     {
@@ -58,8 +51,6 @@ const productList = [
 ];
 
 const Card = () => {
-    const dispatch = useDispatch();
-
     return (
         <Box sx={{
             width: '100%',
@@ -72,35 +63,13 @@ const Card = () => {
                 height="250px"
             >
                 { productList  ? 
-                    productList.map((item) => { return (
-                    <GridItem colSpan={1}>
-                        <Flex sx={{
-                            border: '1px solid lightGrey',
-                            borderRadius: '6px',
-                            padding: '20px',
-                            boxShadow: '1px 1px   grey',
-                        }}>
-                            <VStack sx={{
-                                alignItems: 'left'
-                            }}>
-                                <Box>
-                                    <Image src={item.Images}/>
-                                </Box>
-                                <Box>
-                                    <Text>
-                                        {item.Nama}
-                                    </Text>
-                                    <Text>
-                                        {item.Deskripsi}
-                                    </Text>
-                                </Box>
-                                <Button onClick={() => dispatch(addToCart(item))}>Add To Cart</Button>
-                            </VStack>
-                        </Flex>
-                    </GridItem>
-                    )}
-                    )
-                 : <></>}
+                    productList.map((item) => { 
+                        return (
+                        <CardItem item={item} />
+                        )
+                    })
+                 : <></>
+                }
             </Grid>
         </Box>
     )

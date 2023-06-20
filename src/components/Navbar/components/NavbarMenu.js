@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { 
     Box,
@@ -9,45 +9,18 @@ import {
     Icon, 
     useDisclosure,
     Text,
-    HStack,
-    Image,
     Flex
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+
+import NavbarItem from './NavbarItem';
 
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 
 const NavbarMenu = () => {
     const cartItem = useSelector((state) => state.CartReducer.cart)
     const { isOpen, onOpen, onClose } = useDisclosure();
-
-    // const cartQuantity = cartItem.reduce(
-    //     (quantity, item) => item.quantity + quantity,
-    //     0
-    // );
-
-    const CardItem = () => {
-        return cartItem?.map((item) => {
-            return (
-                <Box sx={{
-                    height: '70px',
-                    padding:'10px',
-                    marginBottom: '10px',
-                    borderBottom: '1px solid lightGrey'
-                }} 
-                key={item.Nama}
-                >
-                    <HStack>
-                        <Image boxSize="50px" src={item?.Images} />
-                        <Text>{item.Nama}</Text>
-                        <Text>{item.Deskripsi}</Text>
-                    </HStack>       
-                </Box>
-            )
-        })
-    }
         
-
     return (
         <Box>
             <Menu isOpen={isOpen}>
@@ -93,7 +66,7 @@ const NavbarMenu = () => {
                         }}>
                             Keranjang Saya
                         </Text>
-                        <CardItem />
+                        <NavbarItem cartItem={cartItem} />
                     </Box>
                 </MenuList>
             </Menu>
