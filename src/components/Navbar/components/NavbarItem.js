@@ -9,12 +9,12 @@ const NavbarItem = ({ cartItem }) => {
                 marginBottom: '10px',
                 borderBottom: '1px solid lightGrey'
             }} 
-            key={item.Nama}
+            key={item.id}
             >
                 <HStack>
-                    <Image boxSize="50px" src={item?.Images} />
-                    <Text>{item.Nama}</Text>
-                    <Text>{item.Deskripsi}</Text>
+                    <Image boxSize="50px" src={item?.images} />
+                    <Text>{item.name}</Text>
+                    <Text>{item.desc}</Text>
                 </HStack>       
             </Box>
         )

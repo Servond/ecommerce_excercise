@@ -4,53 +4,10 @@ import {
 } from '@chakra-ui/react';
 
 import CardItem from './components/CardItem';
-
-const productList = [
-    {
-        Images: 'https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2022/01/07073657/ketahui-makanan-yang-dapat-merusak-kulit-halodoc.jpg',
-        Nama: 'Barang 1',
-        Harga: 20000,
-        Deskripsi: 'Ini Barang 1'
-    },
-    {
-        Images: 'https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2022/01/07073657/ketahui-makanan-yang-dapat-merusak-kulit-halodoc.jpg',
-        Nama: 'Barang 2',
-        Harga: 20000,
-        Deskripsi: 'Ini Barang 2'
-    },
-    {
-        Images: 'https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2022/01/07073657/ketahui-makanan-yang-dapat-merusak-kulit-halodoc.jpg',
-        Nama: 'Barang 3',
-        Harga: 20000,
-        Deskripsi: 'Ini Barang 3'
-    },
-    {
-        Images: 'https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2022/01/07073657/ketahui-makanan-yang-dapat-merusak-kulit-halodoc.jpg',
-        Nama: 'Barang 4',
-        Harga: 20000,
-        Deskripsi: 'Ini Barang 4'
-    },
-    {
-        Images: 'https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2022/01/07073657/ketahui-makanan-yang-dapat-merusak-kulit-halodoc.jpg',
-        Nama: 'Barang 5',
-        Harga: 20000,
-        Deskripsi: 'Ini Barang 5'
-    },
-    {
-        Images: 'https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2022/01/07073657/ketahui-makanan-yang-dapat-merusak-kulit-halodoc.jpg',
-        Nama: 'Barang 5',
-        Harga: 20000,
-        Deskripsi: 'Ini Barang 5'
-    },
-    {
-        Images: 'https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2022/01/07073657/ketahui-makanan-yang-dapat-merusak-kulit-halodoc.jpg',
-        Nama: 'Barang 5',
-        Harga: 20000,
-        Deskripsi: 'Ini Barang 5'
-    },
-];
+import jsonProduct from '../../json-dummy/product.json';
 
 const Card = () => {
+    const productList = jsonProduct.product;
     return (
         <Box sx={{
             width: '100%',
@@ -62,7 +19,7 @@ const Card = () => {
                 gap={4}
                 height="250px"
             >
-                { productList  ? 
+                { productList.length > 0  ? 
                     productList.map((item) => { 
                         return (
                         <CardItem item={item} />

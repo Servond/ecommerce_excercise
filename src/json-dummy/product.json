@@ -1,0 +1,39 @@
+{
+    "product": [
+        {
+            "id": 1,
+            "images": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9Up7d9OsTDarR3EQlr5v0fjDNwOnr1mg-qiy3VoGVe4I-x4XCMktWvi9ATyD-O-VpvcI&usqp=CAU",
+            "name": "Boneka",
+            "price": 50000,
+            "desc": "Mainan anak"
+        },
+        {
+            "id": 2,
+            "images": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNu63YUfNJnuMDa-5-NbUv3CCplWS7v5krlV0niJymeEjp_G8v5Vcg_ATA2XRQExIxwk0&usqp=CAU",
+            "name": "Mobil",
+            "price": 20000,
+            "desc": "Mainan anak"
+        },
+        {
+            "id": 3,
+            "images": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZwemhgnjlKbDeAS5m82v1XFv2WeT8LDA-qw&usqp=CAU",
+            "name": "Yoda",
+            "price": 50000,
+            "desc": "Mainan anak"
+        },
+        {
+            "id": 4,
+            "images": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh4Yj0ktm9CzElSStwd48JLCHhtTuJ80tenQ&usqp=CAU",
+            "name": "Hot Wheels",
+            "price": 50000,
+            "desc": "Mainan anak"
+        },
+        {
+            "id": 5,
+            "images": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh4Yj0ktm9CzElSStwd48JLCHhtTuJ80tenQ&usqp=CAU",
+            "name": "Toy Story",
+            "price": 50000,
+            "desc": "Mainan anak"
+        }
+    ]
+}
