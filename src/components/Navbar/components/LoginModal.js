@@ -21,8 +21,10 @@ import {
     // ErrorMessage
 } from 'formik';
 import axios from 'axios';
-
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+
+import { loginSuccess } from '../../../redux/reducer/AuthReducer';
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
@@ -34,12 +36,16 @@ const LoginSchema = Yup.object().shape({
     .required("Password is required")
 })
 
-const fetchUser = async (email) => {
-    const { data } = await axios.get(`http://localhost:3000/users?email=${email}`);
-    console.log(data);
-}
-
 const LoginModal = ({ isOpen, onClose }) => {
+    const dispatch = useDispatch();
+
+    const fetchUser = async (email) => {
+        const { data } = await axios.get(`http://localhost:3000/users?email=${email}`);
+        for (let i = 0; i < data.length;i++) {
+            dispatch(loginSuccess(data[i]));
+        }
+    }   
+
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -48,7 +54,7 @@ const LoginModal = ({ isOpen, onClose }) => {
         validationSchema: LoginSchema,
         onSubmit: (values) => {
             fetchUser(values.email);
-            localStorage.setItem("login", "true");
+            onClose();
         }
     })
     return (

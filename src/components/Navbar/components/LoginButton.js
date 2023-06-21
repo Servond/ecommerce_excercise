@@ -3,15 +3,20 @@ import {
     Button,
     useDisclosure,
 } from '@chakra-ui/react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { logoutSuccess } from '../../../redux/reducer/AuthReducer';
 
 import LoginModal from "./LoginModal";
 
 const LoginButton = () => {
+    const dispatch = useDispatch();
+    const login = useSelector((state) => state.AuthReducer.login)
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const login = localStorage.getItem("login");
+
     return (
         <Box>
-            { !login ? <Button onClick={onOpen}>Login</Button> : <Button onClick={() => localStorage.removeItem("login")}>Logout</Button>}
+            { !login ? <Button onClick={onOpen}>Login</Button> : <Button onClick={() => dispatch(logoutSuccess())}>Logout</Button>}
             <LoginModal isOpen={isOpen} onClose={onClose} />
         </Box>
     )
