@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "doni",
+      "lastName": "don",
+      "email": "doni@gmail.com",
+      "password": "asd123"
+    },
+    {
+      "firstName": "john",
+      "lastName": "smith",
+      "email": "john@gmail.com",
+      "password": "asd123",
+      "id": 2
+    }
+  ],
+  "dogs": [
+    {
+      "id": 1,
+      "name": "dog"
+    }
+  ]
+}

@@ -13,7 +13,6 @@ import { addToCart } from '../../../redux/reducer/CartReducer';
 
 const CardItem = ({ item }) => {
     const dispatch = useDispatch();
-    console.log(item);
     return (
         <Box key={item.id}>
             <GridItem colSpan={1}>
