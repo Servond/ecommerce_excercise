@@ -39,21 +39,39 @@ const LoginSchema = Yup.object().shape({
 const LoginModal = ({ isOpen, onClose }) => {
     const dispatch = useDispatch();
 
-    const fetchUser = async (email) => {
-        const { data } = await axios.get(`http://localhost:3000/users?email=${email}`);
-        for (let i = 0; i < data.length;i++) {
-            dispatch(loginSuccess(data[i]));
+    // const fetchUser = async (email) => {
+    //     const { data } = await axios.get(`http://localhost:3000/users?email=${email}`);
+    //     for (let i = 0; i < data.length;i++) {
+    //         dispatch(loginSuccess(data[i]));
+    //     }
+    // }
+    
+    const login = async (values) => {
+        try {
+            const { username, email, phone, password } = values;
+            const res = await axios.post("https://minpro-blog.purwadhikabootcamp.com/api/auth/login", {
+                username: username,
+                email: email,
+                phone: phone,
+                password: password
+            })
+            console.log(res);
+        } catch (err) {
+            console.log(err)
         }
-    }   
+    }
 
     const formik = useFormik({
         initialValues: {
+            username: '',
             email: '',
+            phone: '',
             password: ''
         },
         validationSchema: LoginSchema,
         onSubmit: (values) => {
-            fetchUser(values.email);
+            login(values);
+            // fetchUser(values.email);
             onClose();
         }
     })
@@ -65,7 +83,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                 <ModalCloseButton />
                 <ModalBody>
                     <Box sx={{
-                        height: '325px',
+                        // height: '325px',
                         padding: '20px'
                     }}>
                         <form onSubmit={formik.handleSubmit}>
@@ -90,6 +108,44 @@ const LoginModal = ({ isOpen, onClose }) => {
                                     }
                                 </FormControl>
                                 <FormControl sx={{
+                                    marginBottom: '25px'
+                                }}
+                                isInvalid={formik.touched.username && formik.errors.username}
+                                >
+                                    <FormLabel htmlFor='password'>Username :</FormLabel>
+                                    <Input 
+                                        id="username"
+                                        name="username"
+                                        type="text"
+                                        variant="filled"
+                                        onChange={formik.handleChange}
+                                        value={formik.values.username}
+                                    />
+                                    { 
+                                        formik.touched.username && formik.errors.username && 
+                                        <FormErrorMessage>{formik.errors.username}</FormErrorMessage>
+                                    }
+                                </FormControl>
+                                <FormControl sx={{
+                                    marginBottom: '25px'
+                                }}
+                                isInvalid={formik.touched.password && formik.errors.password}
+                                >
+                                    <FormLabel htmlFor='phone'>Phone :</FormLabel>
+                                    <Input 
+                                        id="phone"
+                                        name="phone"
+                                        type="text"
+                                        variant="filled"
+                                        onChange={formik.handleChange}
+                                        value={formik.values.phone}
+                                    />
+                                    { 
+                                        formik.touched.phone && formik.errors.phone && 
+                                        <FormErrorMessage>{formik.errors.phone}</FormErrorMessage>
+                                    }
+                                </FormControl>
+                                                                <FormControl sx={{
                                     marginBottom: '25px'
                                 }}
                                 isInvalid={formik.touched.password && formik.errors.password}

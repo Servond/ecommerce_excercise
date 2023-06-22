@@ -1,11 +1,39 @@
 import { useState, useEffect } from 'react';
-import { Box, Image } from '@chakra-ui/react';
+import { Box, Image, Button } from '@chakra-ui/react';
 import axios from 'axios';
 
 import Card from '../../components/Card';
 
 const Home = () => {
     // const [dogs, setDogs] = useState("");
+
+    const register = async () => {
+        const res = await axios.post("https://minpro-blog.purwadhikabootcamp.com/api/auth/", {
+            username: "bryan",
+            email: "bryan.karta@purwadhika.com",
+            phone: "08123123123",
+            password: "jcwd0110",
+            confirmPassword: "jcwd0110"
+        });
+
+        console.log(res);
+    }
+
+    const verify = async () => {
+        try {
+            const res = await axios.patch("https://minpro-blog.purwadhikabootcamp.com/api/auth/verify", 
+            {},  
+            {
+                headers: {
+                    Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJyeWFuIiwiZW1haWwiOiJicnlhbi5rYXJ0YUBwdXJ3YWRoaWthLmNvbSIsInBob25lIjoiMDgxMjMxMjMxMjMiLCJwYXNzd29yZCI6IiQyYiQxMCRlOUZCdC93MHNkUFVWNlE0TmY4L3IuWC9YNEp2RC4xN2pqLnY5UlduMnZjQUFkUTFyNVU1aSIsImlkIjo0NjMsImlzVmVyaWZpZWQiOmZhbHNlLCJpYXQiOjE2ODc0MDI2NzcsImV4cCI6MTY4NzQwNjI3N30.8ek7vRVeuEUi37zD7iPhGL31DjMl0Mo-rsFX5KZR9Hc" 
+                }
+            })
+            console.log(res);
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
     
     // const fetchData = async () => {
     //     try {
@@ -75,6 +103,8 @@ const Home = () => {
         }}>
             {/* { dogs ? <Image srkc={dogs} alt="dogs" /> : <>tidak</> } */}
             <Card />
+            <Button onClick={() => register()}>Register</Button>
+            <Button onClick={() => verify()}>verify</Button>
         </Box>
     );
 }
