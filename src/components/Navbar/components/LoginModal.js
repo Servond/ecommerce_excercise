@@ -56,6 +56,9 @@ const LoginModal = ({ isOpen, onClose }) => {
                 password: password
             })
             console.log(res);
+            if (res.status === 200) {
+                dispatch(loginSuccess(res.data.token))
+            }
         } catch (err) {
             console.log(err)
         }

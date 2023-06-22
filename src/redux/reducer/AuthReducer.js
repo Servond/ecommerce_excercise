@@ -16,14 +16,14 @@ export const AuthReducer = createSlice({
     initialState,
     reducers: {
         loginSuccess: (state, action) => {
-            state.user = {...action.payload};
+            // state.user = {...action.payload};
             state.login = true;
-            localStorage.setItem("auth", state.login)
+            localStorage.setItem("token", action.payload)
         },
         logoutSuccess: (state) => {
-            state.user = initialState.user;
+            // state.user = initialState.user;
             state.login = false;
-            localStorage.removeItem("auth")
+            localStorage.removeItem("token")
         }
     }
 })
