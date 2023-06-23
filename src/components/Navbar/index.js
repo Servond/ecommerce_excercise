@@ -4,8 +4,6 @@ import {
     HStack, 
     Text,
     Image,
-    Button,
-    useDisclosure,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 
@@ -13,8 +11,6 @@ import NavbarMenu from './components/NavbarMenu';
 import Logo from '../../assets/logo/logo.png';
 
 const Navbar = () => {
-    const { isOpen, onOpen, onClose } = useDisclosure();
-
     return (
         <Box sx={{
             borderBottom: '1px solid lightGrey',
