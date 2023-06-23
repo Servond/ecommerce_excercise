@@ -9,22 +9,16 @@ import {
     FormControl, 
     FormErrorMessage,
     FormLabel, 
-    Form,
     Input, 
     VStack, 
     Button } from '@chakra-ui/react';
 import { 
     useFormik,
-    // Formik,
-    // Form,
-    // Field,
-    // ErrorMessage
 } from 'formik';
-import axios from 'axios';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 
-import { loginSuccess } from '../../../redux/reducer/AuthReducer';
+import { login } from '../../../redux/reducer/AuthReducer';
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
@@ -46,23 +40,23 @@ const LoginModal = ({ isOpen, onClose }) => {
     //     }
     // }
     
-    const login = async (values) => {
-        try {
-            const { username, email, phone, password } = values;
-            const res = await axios.post("https://minpro-blog.purwadhikabootcamp.com/api/auth/login", {
-                username: username,
-                email: email,
-                phone: phone,
-                password: password
-            })
-            console.log(res);
-            if (res.status === 200) {
-                dispatch(loginSuccess(res.data.token))
-            }
-        } catch (err) {
-            console.log(err)
-        }
-    }
+    // const login = async (values) => {
+    //     try {
+    //         const { username, email, phone, password } = values;
+    //         const res = await axios.post("https://minpro-blog.purwadhikabootcamp.com/api/auth/login", {
+    //             username: username,
+    //             email: email,
+    //             phone: phone,
+    //             password: password
+    //         })
+    //         console.log(res);
+    //         if (res.status === 200) {
+    //             dispatch(loginSuccess(res.data.token))
+    //         }
+    //     } catch (err) {
+    //         console.log(err)
+    //     }
+    // }
 
     const formik = useFormik({
         initialValues: {
@@ -73,8 +67,7 @@ const LoginModal = ({ isOpen, onClose }) => {
         },
         validationSchema: LoginSchema,
         onSubmit: (values) => {
-            login(values);
-            // fetchUser(values.email);
+            dispatch(login(values));
             onClose();
         }
     })

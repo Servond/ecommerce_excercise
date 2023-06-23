@@ -1,22 +1,19 @@
-import { useState, useEffect } from 'react';
-import { Box, Image, Button } from '@chakra-ui/react';
+import { Box, Button } from '@chakra-ui/react';
 import axios from 'axios';
 
 import Card from '../../components/Card';
 
 const Home = () => {
-    // const [dogs, setDogs] = useState("");
+    // const [dogs, setDogs] = useState();
 
     const register = async () => {
         const res = await axios.post("https://minpro-blog.purwadhikabootcamp.com/api/auth/", {
-            username: "bryan",
-            email: "bryan.karta@purwadhika.com",
-            phone: "08123123123",
+            username: "bryanss",
+            email: "bryan.kartass@purwadhika.com",
+            phone: "081231231453",
             password: "jcwd0110",
             confirmPassword: "jcwd0110"
         });
-
-        console.log(res);
     }
 
     const verify = async () => {
@@ -25,7 +22,7 @@ const Home = () => {
             {},  
             {
                 headers: {
-                    Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJyeWFuIiwiZW1haWwiOiJicnlhbi5rYXJ0YUBwdXJ3YWRoaWthLmNvbSIsInBob25lIjoiMDgxMjMxMjMxMjMiLCJwYXNzd29yZCI6IiQyYiQxMCRlOUZCdC93MHNkUFVWNlE0TmY4L3IuWC9YNEp2RC4xN2pqLnY5UlduMnZjQUFkUTFyNVU1aSIsImlkIjo0NjMsImlzVmVyaWZpZWQiOmZhbHNlLCJpYXQiOjE2ODc0MDI2NzcsImV4cCI6MTY4NzQwNjI3N30.8ek7vRVeuEUi37zD7iPhGL31DjMl0Mo-rsFX5KZR9Hc" 
+                    Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJyeWFuc3MiLCJlbWFpbCI6ImJyeWFuLmthcnRhc3NAcHVyd2FkaGlrYS5jb20iLCJwaG9uZSI6IjA4MTIzMTIzMTQ1MyIsInBhc3N3b3JkIjoiJDJiJDEwJGJ3d3V0em9zLnU5aWpSL1VWS2Y0Wi5jblUvYTl5cmpVR0JJL1c3aTAycUhDLjZ6ckRmLkguIiwiaWQiOjY0MCwiaXNWZXJpZmllZCI6ZmFsc2UsImlhdCI6MTY4NzUwNzM0MiwiZXhwIjoxNjg3NTEwOTQyfQ.Z5c2MijxGJ-EkH9nP6_oUJvVJIFeioRa_R6Fm0OXKOU" 
                 }
             })
             console.log(res);
