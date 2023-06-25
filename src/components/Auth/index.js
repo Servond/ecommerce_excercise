@@ -20,7 +20,7 @@ const Auth = ({ children }) => {
     // useEffect(() => {
     //     backToHome();
     // }, [backToHome]);
-
+    console.log(children)
     return <>{children}</>
 }
 
