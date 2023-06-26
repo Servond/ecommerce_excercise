@@ -5,7 +5,8 @@ const withStyles = (Component) => {
             margin: '1rem',
             backgroundColor: 'red',
         }
-        return <Component style={style} {...props} />
+        console.log(props);
+        return <Component style={style} {...props}  />
     }
 }
 

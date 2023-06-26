@@ -35,8 +35,7 @@ const Navbar = () => {
                             </HStack>
                         </Link>           
                     </Box>
-                    <NavbarMenu />
-                    
+                    <NavbarMenu />                  
                 </HStack>
             </Flex> 
         </Box>

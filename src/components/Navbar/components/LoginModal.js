@@ -33,31 +33,6 @@ const LoginSchema = Yup.object().shape({
 const LoginModal = ({ isOpen, onClose }) => {
     const dispatch = useDispatch();
 
-    // const fetchUser = async (email) => {
-    //     const { data } = await axios.get(`http://localhost:3000/users?email=${email}`);
-    //     for (let i = 0; i < data.length;i++) {
-    //         dispatch(loginSuccess(data[i]));
-    //     }
-    // }
-    
-    // const login = async (values) => {
-    //     try {
-    //         const { username, email, phone, password } = values;
-    //         const res = await axios.post("https://minpro-blog.purwadhikabootcamp.com/api/auth/login", {
-    //             username: username,
-    //             email: email,
-    //             phone: phone,
-    //             password: password
-    //         })
-    //         console.log(res);
-    //         if (res.status === 200) {
-    //             dispatch(loginSuccess(res.data.token))
-    //         }
-    //     } catch (err) {
-    //         console.log(err)
-    //     }
-    // }
-
     const formik = useFormik({
         initialValues: {
             username: '',

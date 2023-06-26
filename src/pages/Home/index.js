@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { Box, Button } from '@chakra-ui/react';
 import axios from 'axios';
 
 import Card from '../../components/Card';
 
 const Home = () => {
+    const [isLoading, setIsLoading] = useState(false);
     // const [dogs, setDogs] = useState();
 
     const register = async () => {
@@ -32,15 +34,17 @@ const Home = () => {
         }
     }
     
-    // const fetchData = async () => {
-    //     try {
-    //         const { data } = await axios.get("http://localhost:3000/dogs")
-    //         // setDogs(data.message);
-    //         console.log(data);
-    //     } catch(err) {
-    //         console.log(err)
-    //     }
-    // }
+    const fetchData = async () => {
+        try {
+            setIsLoading(true);
+            const { data } = await axios.get("http://localhost:3000/dogs")
+            // setDogs(data.message);
+            setIsLoading(false);
+            console.log(data);
+        } catch(err) {
+            console.log(err)
+        }
+    }
     // const postData = async () => {
     //     try {
     //         // const send = await axios.patch("http://localhost:3000/users/create-user", obj);
@@ -99,7 +103,8 @@ const Home = () => {
             textAlign: 'center'
         }}>
             {/* { dogs ? <Image srkc={dogs} alt="dogs" /> : <>tidak</> } */}
-            <Card />
+            { isLoading ? <Box>Loading...</Box> : <Card />}
+            {/* <Card /> */}
             <Button onClick={() => register()}>Register</Button>
             <Button onClick={() => verify()}>verify</Button>
         </Box>
