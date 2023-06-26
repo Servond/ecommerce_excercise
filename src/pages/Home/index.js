@@ -34,10 +34,14 @@ const Home = () => {
         }
     }
     
-    const fetchData = async () => {
+    const fetchData = async (param) => {
         try {
             setIsLoading(true);
-            const { data } = await axios.get("http://localhost:3000/dogs")
+            if (!param) {
+                throw new Error("Param harus diisi")
+            }
+            const  data  = await axios.get("http://localhost:3000/dogs")
+            console.log(data);
             // setDogs(data.message);
             setIsLoading(false);
             console.log(data);
